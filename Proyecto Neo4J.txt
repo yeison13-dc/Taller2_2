@@ -1,0 +1,74 @@
+
+---- creacion de los nodos--------------
+create (jose:cliente{cedula:'1234', nombre:'Jose Manuel', apellido:'Rozo Lopez',sexo:'M',fechanac:'2002/09/26'})
+create (pepito:cliente{cedula:'4467', nombre:'Pepito', apellido:'Perez',sexo:'M',fechanac:'1995/02/21'})
+create (johanna:cliente{cedula:'7890', nombre:'Johanna', apellido:'Guerrero',sexo:'F',fechanac:'2001/05/04'})
+
+
+create(bogo:Banco{bannid:'2001',nombre:'Banco Bogota'})
+create(popu:Banco{bannid:'2002',nombre:'Banco Popular'})
+create(bbva:Banco{bannid:'2003',nombre:'Banco BBVA'})
+
+
+
+create(ahorro:tipoproducto{id:'1001',nombre:'Ahorros'})
+create(corriente:tipoproducto{id:'1002',nombre:'Corriente'})
+create(cdt:tipoproducto{id:'1003',nombre:'CDT'})
+
+
+
+create(consignacion:tipomovimiento{id:'10',nombre:'Consignacion'})
+create(retiro:tipomovimiento{id:'20',nombre:'Retiro'})
+create(transferencia:tipomovimiento{id:'30',nombre:'Transferencia'})
+
+
+create (juan:empleado{cedula:88123,nombre: 'Juan',apellido: 'Paz',sexo: 'M',fechanac: '01/01/1970'})
+create (juana:empleado{cedula:60123,nombre: 'Juana',apellido: 'de Arco', sexo:'F',fechanac: '09/07/1985'})
+create (julian:empleado{cedula:10123,nombre: 'Julian',apellido: 'Roa',sexo: 'M', fechanac:'05/04/1995'})
+
+
+create(pro:producto{numero:101020 ,fechacreacion:'1997/02/29',saldo: 120000})
+create(prod:producto{numero:101021 ,fechacreacion:'1972/08/23',saldo: 12000})
+create(produ:producto{numero:101022 ,fechacreacion:'1999/02/07',saldo: 20000})
+
+
+create (mov:movimiento{numeromov:462415,fecha:'01/02/2017',valor:100000})
+create (movi:movimiento{numeromov:462416,fecha:'02/04/2017',valor:2500000})
+create (movim:movimiento{numeromov:462417,fecha:'03/05/2017',valor:300000})
+
+
+--CREATE (alias:etiqueta{propiedad:valor,propiedad:valor})
+--CREATE (nodo1óalias1)-[:etiqueta_relacion {propiedad:valor,propiedad:valor}]->(nodo2óalias2)
+
+--------------relacion de los nodos---------
+create(juan)-[:esempleado]->(bogo)
+
+create(juana)-[:esempleado]->(popu)
+
+create(juan)-[:esempleado]->(bbva)
+
+create(pro)-[:pertenece]->(ahorro)
+create(prod)-[:pertenece]->(corriente)
+create(produ)-[:pertenece]->(cdt)
+
+create(jose)-[:tiene]->(pro)
+create(pepito)-[:tiene]->(prod)
+create(johanna)-[:tiene]->(produ)
+
+create(pro)-[:pertenece]->(bogo)
+create(prod)-[:pertenece]->(popu)
+create(produ)-[:pertenece]->(bbva)
+
+create(mov)-[:tiene]->(consignacion)
+create(movi)-[:tiene]->(retiro)
+create(movim)-[:tiene]->(transferencia)
+
+create(juan)-[:hizo]->(mov)
+
+create(juana)-[:hizo]->(movi)
+
+create(juan)-[:hizo]->(movim)
+
+create(pro)-[:pertenece]->(mov)
+create(prod)-[:pertenece]->(movi)
+create(produ)-[:pertenece]->(movi)

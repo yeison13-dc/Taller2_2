@@ -1,0 +1,11 @@
+<?php
+
+
+require_once  'vendor/autoload.php';
+
+utilizar GraphAware-Neo4j-Cliente-ClientBuilder;
+
+ $client á ClientBuilder::create()
+    ->addConnection('Banco', 'bolt://neo4j:12345@localhost:7687')
+    ->Construir();
+?>
